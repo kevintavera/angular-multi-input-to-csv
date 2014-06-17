@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
+    <script src="src/tav.inputstocsv.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+</head>
+<script type="text/javascript">
+    angular.module('TestApp', ['Tavera.InputsToCSV'])
+            .controller('MainController', function ($scope) {
+                $scope.limit = 3;
+                $scope.values = ""
+            });
+</script>
+<body ng-app="TestApp">
+<div class="container" ng-controller="MainController">
+
+    <label for="range-value">
+        Number of inputs
+    </label>
+    <input class="form-control" id="range-value" ng-model="limit"  />
+    <div tav-inputs-to-csv range="limit" ng-model="values" label="'This is input'">
+    </div>
+
+    <pre>
+        <h5>Value binded to $scope.values</h5>
+        {{values | json}}</pre>
+</div>
+</body>
+</html>
